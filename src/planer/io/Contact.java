@@ -1,9 +1,44 @@
 package planer.io;
 
-public class Contact {
+public class Contact 
+{
+	private String name;
+	private int age;
 
-	public Contact() {
-		// TODO Auto-generated constructor stub
+	public Contact(String name, int age) 
+	{
+		super();
+		this.name = name;
+		this.age = age;
 	}
+	
+	public String getName()
+	{
+		return name;
+		
+	}
+	
+	public int getAge()
+	{
+		return age;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public void setAge(int age)
+	{
+		this.age = age;
+		
+	}
+	
+	public String toString()
+	{
+		return null;
+	}
+	
 
 }
+
