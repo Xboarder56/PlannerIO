@@ -16,9 +16,12 @@ public class ContactDriver {
 	 */
 	
 	private static Scanner console = new Scanner(System.in);
+	private static Contact[] contacts;
+	private static int avgAge;
 	
 	public static void main(String[] args) 
 	{
+		
 		/*Calling the methods into the main method to be run.*/
 		intro();
 		inputReader();
@@ -42,11 +45,19 @@ public class ContactDriver {
 	public static void inputOne()
 	{
 		
+		for(int i=0; i<contacts.length; i++)
+		{
+			
+			System.out.println(contacts[i]);
+		}
 	}
 	
 	public static void inputTwo()
 	{
-		
+		System.out.println("Number of contacts: " + contacts);
+		System.out.println("Number of personal contacts:" );
+		System.out.println("Number of personal contacts:" );
+		System.out.println("Average Contact age: " + avgAge);
 	}
 	
 	/**
@@ -62,6 +73,27 @@ public class ContactDriver {
 		
 		/*Close the java machine*/
 		System.exit(0);
+	}
+	
+	public static void calcAvgAge()
+	{
+		for(int i=0; i<=contacts.length; i++)
+		{
+			avgAge =+ contacts[i].getAge();
+		}
+		
+		System.out.println(avgAge);
+	}
+	
+	public static void defaultContactValues()
+	{
+		contacts[0] = new PersonalContact("Joe Smith", 33,"100 Evergreen Ave", "Seattle", "WA", 98999);
+		contacts[1] = new PersonalContact("Lawrence Williams", 45, "2000 1st St", "Tacoma", "WA", 98100);
+		contacts[2] = new PersonalContact("Rachel Garcia", 12, "12 Forest Drive", "Los Angelos", "CA", 99301);
+		contacts[3] = new BusinessContact("Gregory Smith", 67, "360-888-7777", "360-555-6666");
+		contacts[4] = new BusinessContact("Jerome Bradley", 18, "216-111-2222", "253-444-7777");
+		contacts[5] = new BusinessContact("Susie Adams", 23, "253-333-7777", "425-666-9999");
+		
 	}
 	
 	public static void inputReader()

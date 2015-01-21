@@ -1,36 +1,36 @@
 package planer.io;
 
-public class BusinessContact 
+public class BusinessContact extends Contact
 {
 	
-	private int bussinessPhone;
-	private int cellPhone;
+	private String bussinessPhone;
+	private String cellPhone;
 	
-	public BusinessContact(int cellPhone, int bussinessPhone) 
+	public BusinessContact(String name, int age, String cellPhone, String bussinessPhone) 
 	{
-		super();
+		super(name, age);
 		this.cellPhone = cellPhone;
 		this.bussinessPhone = bussinessPhone;
 	}
 	
-	public int getBussinessPhone()
+	public String getBussinessPhone()
 	{
 		return bussinessPhone;
 		
 	}
 	
-	public int getCellPhone()
+	public String getCellPhone()
 	{
 		return cellPhone;
 		
 	}
 	
-	public void setBussinessPhone(int bussinessPhone)
+	public void setBussinessPhone(String bussinessPhone)
 	{
 		this.bussinessPhone = bussinessPhone;
 	}
 	
-	public void setCellPhone(int cellPhone)
+	public void setCellPhone(String cellPhone)
 	{
 		this.cellPhone = cellPhone;
 	}

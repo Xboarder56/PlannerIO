@@ -1,15 +1,15 @@
 package planer.io;
 
-public class PersonalContact 
+public class PersonalContact extends Contact
 {
 	private String address;
 	private String state;
 	private String city;
 	private int zip;
 	
-	public PersonalContact(String address, String state, String city, int zip) 
+	public PersonalContact( String name, int age, String address, String city, String state, int zip) 
 	{
-		super();
+		super(name, age);
 		this.address = address;
 		this.state = state;
 		this.city = city;
