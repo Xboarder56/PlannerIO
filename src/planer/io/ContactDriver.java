@@ -51,6 +51,7 @@ public class ContactDriver {
 			
 			System.out.println(contacts[i]);
 		}
+		System.out.println(" ");
 	}
 	
 	public static void inputTwo()

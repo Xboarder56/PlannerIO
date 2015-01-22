@@ -62,7 +62,8 @@ public class PersonalContact extends Contact
 	
 	public String toString()
 	{
-		return null;
+		return "Personal Contact: " + getName() + " (" + getAge() + "), " + address +
+				", " + city + ", " + state + ", " + zip;
 	}
 	
 

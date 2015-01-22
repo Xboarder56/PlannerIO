@@ -37,7 +37,8 @@ public class BusinessContact extends Contact
 	
 	public String toString()
 	{
-		return null;
+		return "Personal Contact: " + getName() + " (" + getAge() + "), " +"Busniess Cell: " 
+				+ bussinessPhone + ", Personal Phone: " + cellPhone;
 	}
 	
 
