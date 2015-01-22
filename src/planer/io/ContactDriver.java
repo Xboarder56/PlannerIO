@@ -17,7 +17,7 @@ public class ContactDriver {
 	
 	private static Scanner console = new Scanner(System.in);
 	private static Contact[] contacts;
-	private static int avgAge;
+	private static int avgAge, totalBusiness, totalPersonal;
 	
 	public static void main(String[] args) 
 	{
@@ -44,6 +44,7 @@ public class ContactDriver {
 	
 	public static void inputOne()
 	{
+		defaultContactValues();
 		
 		for(int i=0; i<contacts.length; i++)
 		{
@@ -54,10 +55,15 @@ public class ContactDriver {
 	
 	public static void inputTwo()
 	{
-		System.out.println("Number of contacts: " + contacts);
-		System.out.println("Number of personal contacts:" );
-		System.out.println("Number of personal contacts:" );
+		defaultContactValues();
+		calcAvgAge();
+		calContacts();
+		
+		System.out.println("Number of contacts: " + contacts.length);
+		System.out.println("Number of personal contacts: " + totalPersonal);
+		System.out.println("Number of personal contacts: " +  totalBusiness);
 		System.out.println("Average Contact age: " + avgAge);
+		System.out.println(" ");
 	}
 	
 	/**
@@ -75,18 +81,36 @@ public class ContactDriver {
 		System.exit(0);
 	}
 	
+	public static void calContacts()
+	{
+		for(int i=0; i<contacts.length; i++)
+		{
+			if(contacts[i] instanceof PersonalContact)
+			{
+				totalPersonal++;
+			}
+			
+			if(contacts[i] instanceof PersonalContact)
+			{
+				totalBusiness++;
+			}
+		}
+	}
+	
 	public static void calcAvgAge()
 	{
-		for(int i=0; i<=contacts.length; i++)
+		for(int i=0; i<contacts.length; i++)
 		{
-			avgAge =+ contacts[i].getAge();
+			avgAge += contacts[i].getAge();
 		}
 		
-		System.out.println(avgAge);
+		avgAge = avgAge/contacts.length;
 	}
 	
 	public static void defaultContactValues()
 	{
+		contacts = new Contact[6];
+		
 		contacts[0] = new PersonalContact("Joe Smith", 33,"100 Evergreen Ave", "Seattle", "WA", 98999);
 		contacts[1] = new PersonalContact("Lawrence Williams", 45, "2000 1st St", "Tacoma", "WA", 98100);
 		contacts[2] = new PersonalContact("Rachel Garcia", 12, "12 Forest Drive", "Los Angelos", "CA", 99301);
