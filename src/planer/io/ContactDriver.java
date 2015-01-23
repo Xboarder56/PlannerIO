@@ -1,21 +1,36 @@
-package planer.io;
-
-import java.util.Scanner;
 /*
- * 
+ * Garrett J. Beasley
+ * 01/21/2015
+ * ContactDriver.java
  */
 
 /**
  * @author Garrett J. Beasley
- *
+ * @date 01/21/2015
+ * @description The program is a simple program that will allow
+ * the user to display the contacts and data about there contacts
+ * in a user's planner.
  */
-public class ContactDriver {
 
-	/**
-	 * @param args
-	 */
+/*Package for the project (planer.io)*/
+package planer.io;
+
+/*Imports for the project*/
+import java.util.Scanner;
+
+/**This is the MAIN Class for the program to be launched from.
+ * The program consists of 3 options for the user to select
+ * 1. Display contacts, 2. Contact data, 3. Exit
+ * Once the option is selected the user then completes the program
+ * and will have a option to enter the other menu options once again. 
+ */
+
+public class ContactDriver 
+{
+
 	
-	private static Scanner console = new Scanner(System.in);
+	/*Variables for the program.*/
+	private static final Scanner console = new Scanner(System.in);
 	private static Contact[] contacts;
 	private static int avgAge, totalBusiness, totalPersonal;
 	
@@ -30,6 +45,10 @@ public class ContactDriver {
 		console.close();
 	}
 	
+	/**Intro UI for the program
+	 * @description This basically is the console ui for the program allowing
+	 * the user to select 1-3 and then the program will enter into that mode.
+	 *  */
 	public static void intro()
 	{
 		/*User input and selections for the user*/
@@ -41,7 +60,11 @@ public class ContactDriver {
 		
 	}
 	
-	
+	/**
+	 * Input One (when the user hits 1)
+	 * @description When 1 is pressed the program will enter
+	 * into the inputOne method and print out the contacts in the array
+	 */
 	public static void inputOne()
 	{
 		defaultContactValues();
@@ -54,12 +77,22 @@ public class ContactDriver {
 		System.out.println(" ");
 	}
 	
+	/**
+	 * Input Two (when the user hits 2)
+	 * @description When 2 is pressed the program will enter
+	 * into the inputTwo method and calculate the data based
+	 * upon the array that is preprogrammed into the program
+	 * it will print out, total contacts, personal contact#, 
+	 * business contact#, average contact age
+	 */
 	public static void inputTwo()
 	{
+		/*Calls the methods for the data to be printed out.*/
 		defaultContactValues();
 		calcAvgAge();
 		calContacts();
 		
+		/*Prints out the data about the contacts for the user*/
 		System.out.println("Number of contacts: " + contacts.length);
 		System.out.println("Number of personal contacts: " + totalPersonal);
 		System.out.println("Number of personal contacts: " +  totalBusiness);
@@ -82,22 +115,33 @@ public class ContactDriver {
 		System.exit(0);
 	}
 	
+	/**
+	 * Calculates the contacts and stores them in variables
+	 * weather they are business or personal
+	 */
 	public static void calContacts()
 	{
+		/*Loop to go to the total number of contacts in the array 0,1,2,3,4,5*/
 		for(int i=0; i<contacts.length; i++)
 		{
+			/*If the contact is a personal contact enter*/
 			if(contacts[i] instanceof PersonalContact)
 			{
+				/*+1 to the totalPersonal variable.*/
 				totalPersonal++;
 			}
-			
-			if(contacts[i] instanceof PersonalContact)
+			/*If the contact is a business contact enter*/
+			if(contacts[i] instanceof BusinessContact)
 			{
+				/*+1 to the totalBusiness variable.*/
 				totalBusiness++;
 			}
 		}
 	}
 	
+	/**
+	 * Method to calc the average from the contact array.
+	 */
 	public static void calcAvgAge()
 	{
 		for(int i=0; i<contacts.length; i++)
@@ -105,13 +149,22 @@ public class ContactDriver {
 			avgAge += contacts[i].getAge();
 		}
 		
+		/*Sets the total contact value found from the getAge in the loop
+		 * divided by the contact length finding the average
+		 * thus storing it in the variable avgAge.*/
 		avgAge = avgAge/contacts.length;
 	}
 	
+	/**
+	 * Preprogrammed data for the contacts
+	 * set by the teacher for the project
+	 */
 	public static void defaultContactValues()
 	{
+		/*Contacts array set to 6 contacts*/
 		contacts = new Contact[6];
 		
+		/*Preprogrammed data for the contacts in the planer*/
 		contacts[0] = new PersonalContact("Joe Smith", 33,"100 Evergreen Ave", "Seattle", "WA", 98999);
 		contacts[1] = new PersonalContact("Lawrence Williams", 45, "2000 1st St", "Tacoma", "WA", 98100);
 		contacts[2] = new PersonalContact("Rachel Garcia", 12, "12 Forest Drive", "Los Angelos", "CA", 99301);
@@ -120,7 +173,13 @@ public class ContactDriver {
 		contacts[5] = new BusinessContact("Susie Adams", 23, "253-333-7777", "425-666-9999");
 		
 	}
-	
+	/**
+	 * This will read what the user inputs under the UI
+	 * @description: This will read the users input from the UI then
+	 * there selected decision will be placed into a variable between 1-3
+	 * and compared to the programmed selections 1. Display contacts, 2. Contact info
+	 * 3. Exit
+	 */
 	public static void inputReader()
 	{
 		/*Tell the user to pick a selection between 1-4*/
