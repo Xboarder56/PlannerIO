@@ -32,7 +32,6 @@ public class ContactDriver
 	/*Variables for the program.*/
 	private static final Scanner console = new Scanner(System.in);
 	private static Contact[] contacts;
-	private static int avgAge, totalBusiness, totalPersonal;
 	
 	public static void main(String[] args) 
 	{
@@ -53,8 +52,9 @@ public class ContactDriver
 	{
 		/*User input and selections for the user*/
 		System.out.println("Welcome to my planner!");
-		System.out.println("1. Print planner contacts.");
-		System.out.println("2. Print planner statistics.");
+		System.out.println("Create a new contact?");
+		System.out.println("1. Personal Contact");
+		System.out.println("2. Business Contact");
 		System.out.println("3. Exit.");
 		System.out.println(" ");
 		
@@ -67,7 +67,45 @@ public class ContactDriver
 	 */
 	public static void inputOne()
 	{
-		defaultContactValues();
+		/*Tell the user to pick a selection between 1-4*/
+		System.out.println("Please enter how many contacts: ");
+		int contactAmount = console.nextInt(); //clears the prompt (to skip enter key)
+		console.nextLine();
+	
+		for(int i=0; i<contactAmount; i++)
+		{
+			contacts = new Contact[contactAmount];
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the name: ");
+			String name = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the age: ");
+			int age = console.nextInt(); //clears the prompt (to skip enter key)
+			console.nextLine();
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the first part of the address: ");
+			String address = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the city: ");
+			String city = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the state: ");
+			String state = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the zip: ");
+			int zip = console.nextInt(); //clears the prompt (to skip enter key)
+			console.nextLine();
+			
+			
+			contacts[i] = new PersonalContact(name, age, address, city, state, zip);
+		}
 		
 		for(int i=0; i<contacts.length; i++)
 		{
@@ -87,16 +125,42 @@ public class ContactDriver
 	 */
 	public static void inputTwo()
 	{
-		/*Calls the methods for the data to be printed out.*/
-		defaultContactValues();
-		calcAvgAge();
-		calContacts();
+		/*Tell the user to pick a selection between 1-4*/
+		System.out.println("Please enter how many contacts: ");
+		int contactAmount = console.nextInt(); //clears the prompt (to skip enter key)
+		console.nextLine();
+	
+		for(int i=0; i<contactAmount; i++)
+		{
+			contacts = new Contact[contactAmount];
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the name: ");
+			String name = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter the age: ");
+			int age = console.nextInt(); //clears the prompt (to skip enter key)
+			console.nextLine();
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter your BusinessCell: ");
+			String businessCell = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			
+			/*Tell the user to pick a selection between 1-4*/
+			System.out.println("Please enter your PersonalCell: ");
+			String personalCell = console.nextLine(); //clears the prompt (to skip enter key)
+			
+			
+			contacts[i] = new BusinessContact(name, age, businessCell, personalCell);
+		}
 		
-		/*Prints out the data about the contacts for the user*/
-		System.out.println("Number of contacts: " + contacts.length);
-		System.out.println("Number of personal contacts: " + totalPersonal);
-		System.out.println("Number of personal contacts: " +  totalBusiness);
-		System.out.println("Average Contact age: " + avgAge);
+		for(int i=0; i<contacts.length; i++)
+		{
+			
+			System.out.println(contacts[i]);
+		}
 		System.out.println(" ");
 	}
 	
@@ -114,65 +178,7 @@ public class ContactDriver
 		/*Close the java machine*/
 		System.exit(0);
 	}
-	
-	/**
-	 * Calculates the contacts and stores them in variables
-	 * weather they are business or personal
-	 */
-	public static void calContacts()
-	{
-		/*Loop to go to the total number of contacts in the array 0,1,2,3,4,5*/
-		for(int i=0; i<contacts.length; i++)
-		{
-			/*If the contact is a personal contact enter*/
-			if(contacts[i] instanceof PersonalContact)
-			{
-				/*+1 to the totalPersonal variable.*/
-				totalPersonal++;
-			}
-			/*If the contact is a business contact enter*/
-			if(contacts[i] instanceof BusinessContact)
-			{
-				/*+1 to the totalBusiness variable.*/
-				totalBusiness++;
-			}
-		}
-	}
-	
-	/**
-	 * Method to calc the average from the contact array.
-	 */
-	public static void calcAvgAge()
-	{
-		for(int i=0; i<contacts.length; i++)
-		{
-			avgAge += contacts[i].getAge();
-		}
-		
-		/*Sets the total contact value found from the getAge in the loop
-		 * divided by the contact length finding the average
-		 * thus storing it in the variable avgAge.*/
-		avgAge = avgAge/contacts.length;
-	}
-	
-	/**
-	 * Preprogrammed data for the contacts
-	 * set by the teacher for the project
-	 */
-	public static void defaultContactValues()
-	{
-		/*Contacts array set to 6 contacts*/
-		contacts = new Contact[6];
-		
-		/*Preprogrammed data for the contacts in the planer*/
-		contacts[0] = new PersonalContact("Joe Smith", 33,"100 Evergreen Ave", "Seattle", "WA", 98999);
-		contacts[1] = new PersonalContact("Lawrence Williams", 45, "2000 1st St", "Tacoma", "WA", 98100);
-		contacts[2] = new PersonalContact("Rachel Garcia", 12, "12 Forest Drive", "Los Angelos", "CA", 99301);
-		contacts[3] = new BusinessContact("Gregory Smith", 67, "360-888-7777", "360-555-6666");
-		contacts[4] = new BusinessContact("Jerome Bradley", 18, "216-111-2222", "253-444-7777");
-		contacts[5] = new BusinessContact("Susie Adams", 23, "253-333-7777", "425-666-9999");
-		
-	}
+
 	/**
 	 * This will read what the user inputs under the UI
 	 * @description: This will read the users input from the UI then
@@ -192,6 +198,7 @@ public class ContactDriver
 		{
 			/*Go to 1 then loop the code after*/
 			inputOne();
+			intro();
 			inputReader();
 		}
 		
@@ -200,6 +207,7 @@ public class ContactDriver
 		{
 			/*Go to 2 then loop the code after*/
 			inputTwo();
+			intro();
 			inputReader();
 		}
 		
@@ -208,7 +216,6 @@ public class ContactDriver
 		{
 			/*Go to 3 then loop the code after*/
 			inputThree();
-			inputReader();
 		}
 		
 		/*Anything else other then 1-4 will go down here*/ 

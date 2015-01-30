@@ -50,6 +50,7 @@ public class PersonalContact extends Contact
 		this.state = state;
 		this.city = city;
 		this.zip = zip;
+		validate();
 	}
 	
 	/**
@@ -154,5 +155,43 @@ public class PersonalContact extends Contact
 				", " + city + ", " + state + ", " + zip;
 	}
 	
+	/**
+	 * Validate method to insure the user is 
+	 * providing real values not just junk into
+	 *  the program that could cause it to crash.
+	 *  If they provide bad values throw an exception
+	 */
+	public void validate()
+	{
+		if(getName().equals("") || getName().equals(null))
+		{
+			throw new NullPointerException("You need to enter a valid name!");
+		}
+		
+		if(getAge() < 1 || getAge() > 100 )
+		{
+			throw new IllegalStateException("The age you provided is not in a valid range!");
+		}
+		
+		if(address.equals("") || address.equals(null))
+		{
+			throw new NullPointerException("You need to enter a valid address!");
+		}
+		
+		if(city.equals("") || city.equals(null))
+		{
+			throw new NullPointerException("You need to enter a valid city!");
+		}
+		
+		if(state.length() != 2)
+		{
+			throw new IllegalStateException("Not valid state XX !");
+		}
+		
+		if(zip != 5)
+		{
+			throw new IllegalStateException("Not valid zipcode XXXXX !");
+		}
+	}
 
 }

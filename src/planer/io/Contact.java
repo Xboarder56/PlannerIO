@@ -21,7 +21,7 @@ package planer.io;
  * change the variables later on and 
  * return the variables as well
  */
-public class Contact 
+public abstract class Contact
 {
 	/*Variables for the project*/
 	private String name;
@@ -91,6 +91,7 @@ public class Contact
 		return "Name: " + name + "Age " + age;
 	}
 	
+	public abstract void validate();
 
 }
 

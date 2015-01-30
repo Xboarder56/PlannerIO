@@ -43,6 +43,7 @@ public class BusinessContact extends Contact
 		super(name, age);
 		this.cellPhone = cellPhone;
 		this.businessPhone = businessPhone;
+		validate();
 	}
 	
 	/**
@@ -99,6 +100,37 @@ public class BusinessContact extends Contact
 	{
 		return "Personal Contact: " + getName() + " (" + getAge() + "), " +"Busniess Cell: " 
 				+ businessPhone + ", Personal Phone: " + cellPhone;
+	}
+	
+	/**
+	 * Validate method to insure the user is 
+	 * providing real values not just junk into
+	 *  the program that could cause it to crash.
+	 *  If they provide bad values throw an exception
+	 */
+	public void validate()
+	{
+		if(getName().equals("") || getName().equals(null))
+		{
+			throw new NullPointerException("You need to enter a valid name!");
+		}
+		
+		if(getAge() < 1 || getAge() > 100 )
+		{
+			throw new IllegalStateException("The age you provided is not in a valid range!");
+		}
+		
+		if(cellPhone.length() != 12)
+		{
+			throw new IllegalStateException("Not valid phone number needs to be"
+					+ " formated as XXX-XXX-XXXX !");
+		}
+		
+		if(businessPhone.length() != 12)
+		{
+			throw new IllegalStateException("Not valid phone number needs to be"
+					+ " formated as XXX-XXX-XXXX !");
+		}
 	}
 	
 
